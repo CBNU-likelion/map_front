@@ -232,7 +232,7 @@ export default function SchoolDetailPage() {
                 {canContribute && (
                   <button
                     type="button"
-                    className="secondary-button"
+                    className={`secondary-button ${isContributionDisabled ? 'secondary-button--complete' : ''}`}
                     disabled={isContributionDisabled}
                     onClick={() => navigate(`/contribute/${detail.id}`)}
                   >
@@ -240,6 +240,9 @@ export default function SchoolDetailPage() {
                   </button>
                 )}
               </div>
+              {canContribute && isContributionDisabled && (
+                <p className="detail-note">이미 기여를 완료한 학교예요.</p>
+              )}
             </section>
           </main>
 

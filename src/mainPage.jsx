@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import iconImage from './assets/icon.png'
 import mapImage from './assets/map.png'
-import { getStoredSchool, regionMarkers, setStoredSchool } from './appData'
+import { getStoredSchool, getStoredSchoolId, regionMarkers, setStoredSchool } from './appData'
 import { getDoomRanking } from './services/api'
 import { FooterSchoolButton, LogoHeader } from './uiParts'
 
 export default function MainPage() {
   const navigate = useNavigate()
   const selectedSchool = getStoredSchool()
+  const selectedSchoolId = getStoredSchoolId()
   const [rankingData, setRankingData] = useState([])
   const [rankingError, setRankingError] = useState('')
 
@@ -79,7 +80,7 @@ export default function MainPage() {
                       <button
                         key={school.universityId}
                         type="button"
-                        className="ranking-item"
+                        className="ranking-item ranking-item--button"
                         onClick={() =>
                           handleSchoolClick({
                             id: school.universityId,
@@ -106,7 +107,11 @@ export default function MainPage() {
 
           <FooterSchoolButton
             schoolName={selectedSchool}
-            onClick={() => handleSchoolClick(selectedSchool)}
+            onClick={() => {
+              if (selectedSchoolId) {
+                handleSchoolClick({ id: selectedSchoolId, name: selectedSchool })
+              }
+            }}
           />
         </div>
       </div>

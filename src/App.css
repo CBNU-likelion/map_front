@@ -53,13 +53,14 @@ button {
 .screen {
   display: flex;
   justify-content: center;
+  padding: 0;
   min-height: 100svh;
   background: var(--color-brand);
 }
 
 .phone-frame {
   position: relative;
-  width: min(100%, 393px);
+  width: min(100%, 430px);
   min-height: 100svh;
   overflow: hidden;
   background: var(--color-surface);
@@ -281,6 +282,10 @@ button {
   font-size: clamp(1.7rem, 6vw, 2.1rem);
 }
 
+.secondary-button--complete {
+  background: #5b83b8;
+}
+
 .accent-button {
   background: var(--color-brand-accent);
   font-size: clamp(1.6rem, 5vw, 2rem);
@@ -361,7 +366,7 @@ button {
   position: relative;
   margin-top: 14px;
   padding: 0 10px;
-  min-height: 620px;
+  min-height: clamp(500px, 78svh, 620px);
 }
 
 .map-stage__image {
@@ -398,9 +403,9 @@ button {
 
 .ranking-panel {
   position: absolute;
-  right: 14px;
-  bottom: 32px;
-  width: min(36vw, 154px);
+  right: clamp(10px, 3vw, 14px);
+  bottom: clamp(24px, 4vw, 32px);
+  width: clamp(126px, 36vw, 154px);
 }
 
 .ranking-panel__card {
@@ -439,13 +444,21 @@ button {
   align-items: center;
   gap: 7px;
   min-height: 32px;
-  padding: 0 7px;
+  padding: 0px;
   border-radius: 10px;
   background: var(--color-panel);
   color: var(--color-text);
-  font-size: 0.72rem;
+  font-size: clamp(0.68rem, 2.6vw, 0.72rem);
   font-weight: 900;
   text-align: left;
+}
+
+.ranking-item--button {
+  width: 100%;
+}
+
+.ranking-item--button:hover {
+  background: #ececec;
 }
 
 .ranking-item--static {
@@ -502,8 +515,8 @@ button {
 .region-card,
 .detail-card,
 .contribution-card {
-  margin: 18px 20px 0;
-  padding: 16px;
+  margin: 18px clamp(12px, 4vw, 20px) 0;
+  padding: clamp(14px, 4vw, 16px);
   border-radius: 18px;
   box-shadow: none;
   background: var(--color-panel);
@@ -544,7 +557,7 @@ button {
 }
 
 .region-preview {
-  min-height: 295px;
+  min-height: clamp(250px, 40svh, 295px);
   border-radius: 12px;
   background: var(--color-panel);
   padding: 12px;
@@ -561,7 +574,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 210px;
+  min-height: clamp(170px, 30svh, 210px);
   border-radius: 14px;
   background: linear-gradient(145deg, #f5f5f5, #e7e7e7);
 }
@@ -570,16 +583,16 @@ button {
 .detail-hero__badge {
   display: grid;
   place-items: center;
-  width: 160px;
-  height: 160px;
+  width: clamp(128px, 34vw, 160px);
+  height: clamp(128px, 34vw, 160px);
   border-radius: 999px;
   background: rgba(255, 179, 84, 0.28);
 }
 
 .region-hero__badge img,
 .detail-hero__badge img {
-  width: 112px;
-  height: 112px;
+  width: clamp(92px, 24vw, 112px);
+  height: clamp(92px, 24vw, 112px);
 }
 
 .region-subtitle,
@@ -593,7 +606,7 @@ button {
   border-radius: 12px;
   background: var(--color-panel-strong);
   color: var(--color-text);
-  font-size: 1.1rem;
+  font-size: clamp(0.96rem, 3.6vw, 1.1rem);
   font-weight: 900;
 }
 
@@ -647,12 +660,13 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   min-height: 42px;
   padding: 0 14px;
   border-radius: 12px;
   background: #fff;
   color: var(--color-text);
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 3.5vw, 1.05rem);
   font-weight: 900;
 }
 
@@ -721,7 +735,7 @@ button {
 .field-card__label {
   margin: 0 0 10px;
   color: var(--color-text);
-  font-size: 1.05rem;
+  font-size: clamp(0.96rem, 3.4vw, 1.05rem);
   font-weight: 900;
   text-align: center;
 }
@@ -735,13 +749,13 @@ button {
 
 .number-pill,
 .text-pill {
-  width: 82px;
+  width: clamp(78px, 24vw, 82px);
   min-height: 38px;
   padding: 0 12px;
   border-radius: 12px;
   background: var(--color-panel);
   color: var(--color-brand);
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
   font-weight: 900;
   text-align: center;
 }
@@ -754,7 +768,7 @@ button {
 
 .unit-label {
   color: var(--color-text);
-  font-size: 1.6rem;
+  font-size: clamp(1.25rem, 5vw, 1.6rem);
   font-weight: 900;
 }
 
@@ -762,6 +776,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 48px;
 }
 
@@ -858,5 +873,81 @@ button {
 
   .detail-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .screen {
+    padding: 0;
+  }
+
+  .brand-header--compact {
+    padding: 16px 18px;
+  }
+
+  .page-copy {
+    padding: 0 16px;
+    font-size: 1.2rem;
+  }
+
+  .map-stage {
+    padding: 0 8px;
+    min-height: clamp(460px, 74svh, 560px);
+  }
+
+  .map-marker {
+    width: clamp(42px, 12vw, 50px);
+    height: clamp(42px, 12vw, 50px);
+  }
+
+  .ranking-panel__card {
+    padding: 6px;
+    border-width: 5px;
+  }
+
+  .ranking-panel__title {
+    min-height: 30px;
+    font-size: clamp(0.72rem, 2.9vw, 0.8rem);
+  }
+
+  .ranking-item__medal {
+    width: clamp(18px, 5vw, 21px);
+    height: clamp(18px, 5vw, 21px);
+    font-size: clamp(0.62rem, 2.4vw, 0.72rem);
+  }
+
+  .region-school-button {
+    min-height: 52px;
+    padding: 0 14px;
+    font-size: 1rem;
+  }
+
+  .detail-mood,
+  .region-subtitle,
+  .stat-chip {
+    padding: 10px 12px;
+    min-height: unset;
+  }
+
+  .detail-mood,
+  .region-subtitle {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .binary-row {
+    gap: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .screen {
+    padding: 24px;
+  }
+
+  .phone-frame {
+    min-height: calc(100svh - 48px);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft);
   }
 }
